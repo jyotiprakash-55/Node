@@ -1,0 +1,62 @@
+Introduction
+Node js is a Runtime environment for javascript.
+Basically google use v8 engine to execute js code so node js is basically a mixture of v8 and C++, there are few things 
+which has been removed like dom manipulations like alert etc.
+We can run a node js file by using node filename.
+while starting a project we should use npm- node package module.
+npm init which will create a package.json file which will have all the configurations.
+npm is basically used to manage all the packages in our package like installing and uninstalling packages.
+
+Modules in node js
+There are varous modules like build in modules like http,fs which we can use in our js file using require function.
+If we create a custom module we need to export that module so that it can become public and can be used in other places.
+
+Math.js
+function add(a,b){
+	return a+b;
+}
+Module.exports = {add,sub,};--for multiple functions
+exports.add = (a,b)=> a+b;
+
+Execute.js
+const math= require('./math');
+console.log("math value is:",add(2,4));
+
+Example:
+var http = require('http');
+var dt = require('./firstmodule');---./ current directory
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write("The date and time are currently: " + dt.myDateTime());
+  res.end();
+}).listen(8080);
+
+Files handling in node.js
+const fs = require("fs");
+
+//sync
+fs.writefilesync("/test.txt","Hello world");
+//async
+fs.writefile("/test.txt","Hello world",(err,result)=>{
+	if(err){
+	console.log(err);
+	}else{
+	console.log(result);
+	}
+});
+
+we are having readfile and readfileasync to read the content of file we need to pass the filename and encoding type
+cpasync, appendfile, unlink etc.
+
+Architecture of Node js
+The user requests some operations on the server then the requests are go in events queue , there is an event
+loop which iterates over the queue and execute the event uses FIFO, the events/operations are basically two types 
+one is blocking sync and non blocking async, if they are simple/non blocking then they get executed by the main thread, if they 
+are blocking then they get executed by the event threads, they are basically 4 event threads but they depend on your cpu.
+
+
+
+ 
+
+
