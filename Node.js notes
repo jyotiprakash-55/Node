@@ -110,6 +110,41 @@ myServer.listen('8000',() => console.log("server started"));
 HTTP methods
 Get,post,put,delete,patch
 
+Using Express
+installing express-- npm i express
+specific version -- npm i express@4.21.1
+npm uninstall express
+Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+const express = require("express");
+
+const app = express();
+
+app.get("/",(req,res) => {
+    return res.send("Hello from homepage");
+});
+
+app.get("/about",(req,res) => {
+    return res.send(`Hello ${req.query.name} and your age is ${req.query.age}`);
+});
+
+app.listen(8000,() => console.log("server started"));
+
+Versioning
+4.18.2
+2----minor fixes not important to update
+18--- major bug fixes or security fixes needs to update
+4--- only if we are starting a new project dont update in existing project which is using 4 then dont update it to 5 bcz major breakdowns is possible.
+^4.18.2 means update recommended and minor but dont update to 5 means less than 5 it can update anything
+~ means recommended will not be updated only the minor
+
+RestFul API
+when client request to a server then server processes the request and give a response it can be json object or html
+json object -- cr client side rendering means client will render json data in specific format use when you know the data will be rendered in cross platforms
+ssr server side rendering means server will give html as response , use only when you know the data will be rendered in a browser
+Restful means some standard rules to follow like for getting all users only use get methods.
+
+
+
 
 
 
